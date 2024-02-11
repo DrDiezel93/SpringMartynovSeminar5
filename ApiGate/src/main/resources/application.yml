@@ -1,0 +1,21 @@
+server:
+  port: 8088
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8767/eureka
+spring:
+  application:
+    name: API-GATEWAY-SERVICE
+  cloud.gateway:
+    discovery:
+      locator:
+        enabled: true
+        lowerCaseServiceId: true
+  cloud:
+    gateway:
+      routes:
+        - id: DEMO-SERVICE32123
+          uri: http://localhost:9091
+          predicates:
+            - Path=/tasks/**
